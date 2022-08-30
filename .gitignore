@@ -2,3 +2,4 @@ node_modules
 coverage
 .idea
 .vscode/settings.json
+.vscode/launch.json
