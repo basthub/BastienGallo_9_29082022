@@ -26,8 +26,7 @@ export default class NewBill {
     if (!regexFileType.test(file.name)){
       fileInput.value = null
       if(!document.contains(document.getElementById('error-format'))){
-        fileInput.insertAdjacentHTML(`afterend`, "<p id='error-format'> Le format du fichier n'est pas pris en charge (veuillez utiliser un fichier png, jpg ou jpeg)</p>")
-        console.log("wrong document format")
+        fileInput.insertAdjacentHTML(`afterend`, "<p id='error-format' data-testid='error-format'> Le format du fichier n'est pas pris en charge (veuillez utiliser un fichier png, jpg ou jpeg)</p>")
       }
 
     }
@@ -49,7 +48,6 @@ export default class NewBill {
         }
       })
       .then(({fileUrl, key}) => {
-        console.log(fileUrl)
         this.billId = key
         this.fileUrl = fileUrl
         this.fileName = fileName
@@ -57,7 +55,6 @@ export default class NewBill {
   }
   handleSubmit = e => {
     e.preventDefault()
-    console.log('e.target.querySelector(`input[data-testid="datepicker"]`).value', e.target.querySelector(`input[data-testid="datepicker"]`).value)
     const email = JSON.parse(localStorage.getItem("user")).email
     const bill = {
       email,
